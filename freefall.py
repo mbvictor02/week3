@@ -1,23 +1,16 @@
-H = float(input("Initial height:  "))               #Asks user the inital height
-g = float(input("Select the planet your object is at:\n" "Mercurio"))
-T = (2*H/g)**1/2                                    #Total fall time (float)
-T2 =int( T//1)                                      #Total fall time (integrer)
-t = float(0)                                        #t is defined as a time during the fall   
+gravity = [3.7, 8.87, 9.8, 3.71, 24.79, 10.44, 8.87, 11.15]
+H = float(input("Initial height (m): "))  # Asks the user for the initial height
+g = int(input("Select the planet your object is at:\n "
+              "1. Mercury\n 2. Venus\n 3. Earth\n 4. Mars\n 5. Jupiter\n "
+              "6. Saturn\n 7. Uranus\n 8. Neptune\n")) - 1  # Subtract 1 to match the list index
+T = (2 * H / gravity[g]) ** 0.5  # Total fall time (float)
+T2 = int(T // 1)  # Total fall time (integer)
+t = 0  # t is defined as a time during the fall
 
-
-for t in range (T2):
-    y = H-1/2*g*t**2                                #Position function 
-    print ("At t = ", t, " the height is ", y)
+for t in range(T2):
+    y = H - 0.5 * gravity[g] * t ** 2  # Position function
+    print("At t =", t, " s the height is", y, " m")
     t += 1
 
-y = H-1/2*g*T**2
-print ("At t = ", T, " the height is ", y)
-
-Mercurio	3,7 m/s²
-Venus	8,87 m/s²
-La Tierra	9, 8 m/s²
-Marte	3,71 m/s²
-Júpiter	24,79 m/s²
-Saturno	10,44 m/s²
-Urano	8,87 m/s²
-Neptuno	11,15 m/s²
+y = H - 0.5 * gravity[g] * T ** 2
+print("At t =", T, " s the height is", y, " m")
